@@ -1,4 +1,4 @@
-* {
+ * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
@@ -21,31 +21,41 @@ body::before {
 	position: absolute;
 	width: 200%;
 	height: 200%;
-	background: radial-gradient(
-		circle,
-		rgba(79, 172, 254, 0.1) 1px,
-		transparent 1px
-	);
+	background: radial-gradient(circle, rgba(79, 172, 254, 0.1) 1px, transparent 1px);
 	background-size: 50px 50px;
 	animation: gridMove 20s linear infinite;
 }
 
 @keyframes gridMove {
-	0% {
-		transform: translate(0, 0);
-	}
-	100% {
-		transform: translate(50px, 50px);
-	}
+	0% { transform: translate(0, 0); }
+	100% { transform: translate(50px, 50px); }
 }
 
+/* ===== מבנה כללי ===== */
 .container {
-	max-width: 450px;
+	max-width: 480px;
 	width: 100%;
 	position: relative;
 	z-index: 1;
+	padding: 15px;
 }
 
+.main-card {
+	background: rgba(255, 255, 255, 0.95);
+	border-radius: 30px;
+	padding: 35px;
+	box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+	backdrop-filter: blur(20px);
+	border: 2px solid rgba(255, 255, 255, 0.5);
+	transition: all 0.3s ease;
+}
+
+body.dark .main-card {
+	background: rgba(30, 30, 50, 0.95);
+	border: 2px solid rgba(79, 172, 254, 0.3);
+}
+
+/* ===== כפתור מצב לילה ===== */
 .theme-toggle {
 	position: absolute;
 	top: -60px;
@@ -66,20 +76,7 @@ body::before {
 	transform: scale(1.05);
 }
 
-.main-card {
-	background: rgba(255, 255, 255, 0.95);
-	border-radius: 30px;
-	padding: 35px;
-	box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
-	backdrop-filter: blur(20px);
-	border: 2px solid rgba(255, 255, 255, 0.5);
-}
-
-body.dark .main-card {
-	background: rgba(30, 30, 50, 0.95);
-	border: 2px solid rgba(79, 172, 254, 0.3);
-}
-
+/* ===== טקסטים ===== */
 h1 {
 	color: #2c3e50;
 	margin-bottom: 10px;
@@ -89,14 +86,12 @@ h1 {
 	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
-	background-clip: text;
 }
 
 body.dark h1 {
 	background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
-	background-clip: text;
 }
 
 .subtitle {
@@ -106,10 +101,9 @@ body.dark h1 {
 	text-align: center;
 }
 
-body.dark .subtitle {
-	color: #aaa;
-}
+body.dark .subtitle { color: #aaa; }
 
+/* ===== סטטיסטיקות ===== */
 .stats {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
@@ -127,16 +121,11 @@ body.dark .subtitle {
 	transition: all 0.3s ease;
 }
 
-.stat-item:hover {
-	transform: translateY(-3px);
-	box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
-}
-
 .stat-number {
 	font-size: 1.8em;
-	display: block;
 	font-weight: bold;
 	margin-bottom: 5px;
+	display: block;
 }
 
 .stat-label {
@@ -144,58 +133,19 @@ body.dark .subtitle {
 	opacity: 0.9;
 }
 
-.streak {
-	background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-}
-
-.progress-container {
-	margin: 20px 0;
-}
-
-.progress-label {
-	display: flex;
-	justify-content: space-between;
-	margin-bottom: 8px;
-	font-size: 0.9em;
-	color: #666;
-	font-weight: 600;
-}
-
-body.dark .progress-label {
-	color: #aaa;
-}
-
-.progress-bar {
-	width: 100%;
-	height: 10px;
-	background: rgba(0, 0, 0, 0.1);
-	border-radius: 10px;
-	overflow: hidden;
-	box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.progress-fill {
-	height: 100%;
-	background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
-	border-radius: 10px;
-	transition: width 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-	width: 0%;
-	box-shadow: 0 0 10px rgba(79, 172, 254, 0.5);
-}
-
+/* ===== כרטיס השאלה ===== */
 .question-card {
 	background: white;
 	border-radius: 25px;
 	padding: 40px 30px;
 	margin: 20px 0;
 	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-	border: 3px solid transparent;
-	background-clip: padding-box;
-	position: relative;
 	min-height: 300px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	text-align: center;
+	position: relative;
 	transition: all 0.3s ease;
 }
 
@@ -204,171 +154,62 @@ body.dark .question-card {
 	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
 }
 
-.question-card::before {
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	height: 5px;
-	background: linear-gradient(90deg, #4facfe 0%, #00f2fe 50%, #667eea 100%);
-	border-radius: 25px 25px 0 0;
-}
-
-.question-text {
-	font-size: 1.5em;
-	color: #333;
-	margin-bottom: 25px;
-	font-weight: 600;
-	text-align: center;
-}
-
-body.dark .question-text {
-	color: #fff;
-}
-
+/* ===== המספר המרכזי ===== */
 .number-display {
 	font-size: 5em;
 	font-weight: 900;
 	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
-	background-clip: text;
 	margin: 30px 0;
-	text-align: center;
-	position: relative;
-	animation: numberEntrance 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-body.dark .number-display {
-	background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	background-clip: text;
+	animation: numberEntrance 0.5s ease;
 }
 
 @keyframes numberEntrance {
-	0% {
-		opacity: 0;
-		transform: scale(0.5) rotateY(90deg);
-	}
-	100% {
-		opacity: 1;
-		transform: scale(1) rotateY(0deg);
-	}
+	0% { opacity: 0; transform: scale(0.5) rotateY(90deg); }
+	100% { opacity: 1; transform: scale(1) rotateY(0deg); }
 }
 
-.number-display.correct {
-	background: linear-gradient(135deg, #56ab2f 0%, #a8e6cf 100%);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	animation: correctPulse 0.6s ease;
-}
-
-.number-display.incorrect {
-	background: linear-gradient(135deg, #ff6b6b 0%, #ffa500 100%);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	animation: incorrectShake 0.5s ease;
-}
-
-@keyframes correctPulse {
-	0%,
-	100% {
-		transform: scale(1);
-	}
-	50% {
-		transform: scale(1.1);
-	}
-}
-
-@keyframes incorrectShake {
-	0%,
-	100% {
-		transform: translateX(0);
-	}
-	25% {
-		transform: translateX(-10px);
-	}
-	75% {
-		transform: translateX(10px);
-	}
-}
-
+/* ===== כפתורי תשובה ===== */
 .buttons {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	gap: 15px;
-	margin-top: 20px;
+	margin-top: 15px;
 }
 
 .btn {
-	padding: 18px 30px;
+	padding: 18px;
 	border: none;
 	border-radius: 15px;
-	font-size: 1.3em;
+	font-size: 1.2em;
 	font-weight: bold;
 	cursor: pointer;
-	transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+	transition: all 0.3s ease;
+	color: white;
 	text-transform: uppercase;
-	letter-spacing: 1px;
-	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-	position: relative;
-	overflow: hidden;
-}
-
-.btn::before {
-	content: "";
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	width: 0;
-	height: 0;
-	border-radius: 50%;
-	background: rgba(255, 255, 255, 0.3);
-	transform: translate(-50%, -50%);
-	transition: width 0.6s, height 0.6s;
-}
-
-.btn:hover::before {
-	width: 300px;
-	height: 300px;
 }
 
 .btn-yes {
 	background: linear-gradient(135deg, #56ab2f, #a8e6cf);
-	color: white;
 }
-
 .btn-no {
 	background: linear-gradient(135deg, #ff6b6b, #ffa500);
-	color: white;
 }
-
 .btn:hover {
-	transform: translateY(-3px);
-	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+	transform: scale(1.05);
 }
 
-.btn:active {
-	transform: translateY(-1px);
-}
-
-.btn:disabled {
-	opacity: 0.5;
-	cursor: not-allowed;
-	transform: none;
-}
-
+/* ===== משוב ===== */
 .feedback {
 	margin-top: 20px;
-	padding: 20px;
+	padding: 15px;
 	border-radius: 15px;
 	font-weight: bold;
-	font-size: 1.1em;
+	font-size: 1em;
 	opacity: 0;
 	transform: translateY(-10px);
-	transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+	transition: all 0.4s ease;
 	text-align: center;
 }
 
@@ -377,99 +218,27 @@ body.dark .number-display {
 	transform: translateY(0);
 }
 
-.feedback.correct {
-	background: linear-gradient(135deg, #d4edda, #c3e6cb);
-	color: #155724;
-	border: 2px solid #c3e6cb;
-}
-
-body.dark .feedback.correct {
-	background: linear-gradient(135deg, #1e4620, #2d5a2e);
-	color: #a8e6cf;
-}
-
-.feedback.incorrect {
-	background: linear-gradient(135deg, #f8d7da, #f5c6cb);
-	color: #721c24;
-	border: 2px solid #f5c6cb;
-}
-
-body.dark .feedback.incorrect {
-	background: linear-gradient(135deg, #4a1f23, #5a2a2e);
-	color: #ffb3ba;
-}
-
-.explanation {
-	margin-top: 10px;
-	font-size: 0.95em;
-	opacity: 0.9;
-}
-
+/* ===== טיימר ===== */
 .timer {
 	text-align: center;
 	margin: 15px 0;
-	font-size: 1.1em;
+	font-size: 1em;
 	font-weight: bold;
 	color: white;
 	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-	padding: 12px 25px;
+	padding: 10px 20px;
 	border-radius: 25px;
 	display: none;
-	animation: timerPulse 1s infinite;
 }
 
-@keyframes timerPulse {
-	0%,
-	100% {
-		transform: scale(1);
-	}
-	50% {
-		transform: scale(1.05);
-	}
-}
+.timer.show { display: block; }
 
-.timer.show {
-	display: block;
-}
-
-.next-btn {
-	background: linear-gradient(135deg, #667eea, #764ba2);
-	color: white;
-	margin-top: 15px;
-	width: 100%;
-	display: none;
-}
-
+/* ===== מסך סיום ===== */
 .completion-screen {
 	display: none;
 	text-align: center;
-	animation: fadeInScale 0.5s ease;
 }
-
-.completion-screen.show {
-	display: block;
-}
-
-@keyframes fadeInScale {
-	0% {
-		opacity: 0;
-		transform: scale(0.8);
-	}
-	100% {
-		opacity: 1;
-		transform: scale(1);
-	}
-}
-
-.completion-screen h2 {
-	font-size: 2.5em;
-	margin-bottom: 15px;
-	color: #333;
-}
-
-body.dark .completion-screen h2 {
-	color: #fff;
-}
+.completion-screen.show { display: block; }
 
 .score-circle {
 	width: 180px;
@@ -479,108 +248,83 @@ body.dark .completion-screen h2 {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin: 30px auto;
+	margin: 25px auto;
 	color: white;
 	font-size: 3em;
 	font-weight: bold;
 	box-shadow: 0 15px 40px rgba(245, 87, 108, 0.4);
-	animation: scoreReveal 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 	border: 5px solid white;
 }
 
-@keyframes scoreReveal {
-	0% {
-		transform: scale(0) rotate(-180deg);
-		opacity: 0;
+/* ===== התאמה למסכים קטנים (טלפונים) ===== */
+@media (max-width: 768px) {
+	body {
+		padding: 10px;
+		align-items: flex-start;
 	}
-	100% {
-		transform: scale(1) rotate(0deg);
-		opacity: 1;
-	}
-}
 
-.final-message {
-	font-size: 1.3em;
-	margin: 20px 0;
-	color: #555;
-	font-weight: 600;
-}
-
-body.dark .final-message {
-	color: #ccc;
-}
-
-.stats-summary {
-	background: rgba(102, 126, 234, 0.1);
-	padding: 20px;
-	border-radius: 15px;
-	margin: 20px 0;
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	gap: 15px;
-}
-
-body.dark .stats-summary {
-	background: rgba(79, 172, 254, 0.1);
-}
-
-.summary-item {
-	text-align: center;
-}
-
-.summary-number {
-	font-size: 2em;
-	font-weight: bold;
-	color: #667eea;
-	display: block;
-}
-
-body.dark .summary-number {
-	color: #4facfe;
-}
-
-.summary-label {
-	font-size: 0.9em;
-	color: #666;
-	margin-top: 5px;
-}
-
-body.dark .summary-label {
-	color: #aaa;
-}
-
-.restart-btn {
-	background: linear-gradient(135deg, #667eea, #764ba2);
-	color: white;
-	width: 100%;
-	margin-top: 20px;
-	font-size: 1.2em;
-}
-
-@media (max-width: 480px) {
 	.container {
+		max-width: 95%;
 		padding: 10px;
 	}
 
 	.main-card {
 		padding: 25px 20px;
+		border-radius: 20px;
 	}
+
+	h1 { font-size: 1.8em; }
+	.subtitle { font-size: 0.95em; }
 
 	.number-display {
 		font-size: 3.5em;
-	}
-
-	h1 {
-		font-size: 1.8em;
+		margin: 20px 0;
 	}
 
 	.stats {
 		grid-template-columns: repeat(2, 1fr);
 	}
 
+	.btn {
+		padding: 14px;
+		font-size: 1em;
+	}
+
+	.theme-toggle {
+		top: -50px;
+		font-size: 0.9em;
+		padding: 8px 15px;
+	}
+
 	.score-circle {
-		width: 150px;
-		height: 150px;
-		font-size: 2.5em;
+		width: 140px;
+		height: 140px;
+		font-size: 2.2em;
 	}
 }
+
+/* ===== התאמה למסכים קטנים במיוחד (טלפונים ישנים) ===== */
+@media (max-width: 480px) {
+	h1 { font-size: 1.6em; }
+	.number-display { font-size: 3em; }
+	.btn { font-size: 0.9em; padding: 12px; }
+	.stats { gap: 8px; }
+	.stat-item { padding: 10px; font-size: 0.85em; }
+	.timer { font-size: 0.9em; padding: 8px 12px; }
+}
+
+/* ===== התאמה למסכים גדולים (דסקטופ) ===== */
+@media (min-width: 1024px) {
+	.container {
+		max-width: 600px;
+	}
+	.main-card {
+		padding: 50px 40px;
+		border-radius: 35px;
+	}
+	.number-display {
+		font-size: 6em;
+	}
+	h1 {
+		font-size: 2.5em;
+	}
