@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>בוחן מספרים ראשוניים</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<div class="container">
+			<button class="theme-toggle" onclick="toggleTheme()">🌙 מצב לילה</button>
+
+			<div class="main-card">
+				<h1>🔢 בוחן מספרים ראשוניים</h1>
+				<p class="subtitle">בדוק את עצמך על המספרים הראשוניים!</p>
+
+				<div class="stats">
+					<div class="stat-item">
+						<span class="stat-number" id="correct">0</span>
+						<span class="stat-label">נכון</span>
+					</div>
+					<div class="stat-item">
+						<span class="stat-number" id="wrong">0</span>
+						<span class="stat-label">שגוי</span>
+					</div>
+					<div class="stat-item">
+						<span class="stat-number" id="accuracy">0%</span>
+						<span class="stat-label">דיוק</span>
+					</div>
+					<div class="stat-item streak">
+						<span class="stat-number" id="streak">0</span>
+						<span class="stat-label">🔥 רצף</span>
+					</div>
+				</div>
+
+				<div class="progress-container">
+					<div class="progress-label">
+						<span>התקדמות</span>
+						<span
+							><span id="currentQ">0</span> / <span id="totalQ">15</span></span
+						>
+					</div>
+					<div class="progress-bar">
+						<div class="progress-fill" id="progressFill"></div>
+					</div>
+				</div>
+
+				<div class="timer" id="timer">
+					⏳ זמן מנוחה: <span id="timeLeft">2</span> שניות
+				</div>
+
+				<div id="gameScreen">
+					<div class="question-card">
+						<div class="question-text">האם המספר הזה ראשוני?</div>
+						<div class="number-display" id="currentNumber">2</div>
+						<div class="buttons">
+							<button class="btn btn-yes" onclick="answer(true)">כן ✓</button>
+							<button class="btn btn-no" onclick="answer(false)">לא ✗</button>
+						</div>
+						<div class="feedback" id="feedback">
+							<div id="feedbackText"></div>
+							<div class="explanation" id="explanation"></div>
+						</div>
+						<button class="btn next-btn" id="nextBtn" onclick="nextQuestion()">
+							השאלה הבאה ➜
+						</button>
+					</div>
+				</div>
+
+				<div class="completion-screen" id="completionScreen">
+					<h2>🎉 כל הכבוד!</h2>
+					<p class="subtitle">סיימת את הבחינה!</p>
+					<div class="score-circle" id="finalScore">85%</div>
+					<p class="final-message" id="finalMessage">ביצוע מעולה!</p>
+
+					<div class="stats-summary">
+						<div class="summary-item">
+							<span class="summary-number" id="finalCorrect">0</span>
+							<span class="summary-label">תשובות נכונות</span>
+						</div>
+						<div class="summary-item">
+							<span class="summary-number" id="finalWrong">0</span>
+							<span class="summary-label">תשובות שגויות</span>
+						</div>
+						<div class="summary-item">
+							<span class="summary-number" id="maxStreak">0</span>
+							<span class="summary-label">רצף מקסימלי 🔥</span>
+						</div>
+						<div class="summary-item">
+							<span class="summary-number" id="finalTime">0s</span>
+							<span class="summary-label">זמן כולל</span>
+						</div>
+					</div>
+
+					<button class="btn restart-btn" onclick="restart()">
+						🔄 התחל מחדש
+					</button>
+				</div>
+			</div>
+		</div>
+		<script src="app.js"></script>
+	</body>
+</html>
