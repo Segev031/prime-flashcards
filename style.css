@@ -13,7 +13,8 @@ body {
 	align-items: center;
 	padding: 20px;
 	position: relative;
-	overflow: hidden;
+	overflow-x: hidden;
+	direction: rtl;
 }
 
 body::before {
@@ -49,7 +50,7 @@ body::before {
 .theme-toggle {
 	position: absolute;
 	top: -60px;
-	left: 0;
+	right: 0;
 	background: rgba(255, 255, 255, 0.1);
 	border: 2px solid rgba(255, 255, 255, 0.2);
 	color: white;
@@ -590,63 +591,81 @@ body.dark .summary-label {
 	body {
 		padding: 10px;
 		align-items: flex-start;
+		min-height: 100vh;
+		overflow-x: hidden;
 	}
 
 	.container {
-		max-width: 95%;
-		padding: 10px;
+		max-width: 100%;
+		width: 100%;
+		padding: 0;
+		margin: 0 auto;
 	}
 
 	.main-card {
-		padding: 25px 20px;
+		padding: 20px 15px;
 		border-radius: 20px;
+		width: 100%;
+		box-sizing: border-box;
 	}
 
 	.theme-toggle {
 		top: -45px;
+		right: 0;
 		font-size: 0.9em;
 		padding: 8px 14px;
 	}
 
 	h1 {
-		font-size: 1.8em;
+		font-size: 1.6em;
 		margin-bottom: 5px;
 	}
 
 	.subtitle {
-		font-size: 0.9em;
+		font-size: 0.85em;
 		margin-bottom: 15px;
 	}
 
 	.stats {
 		grid-template-columns: repeat(2, 1fr);
 		gap: 8px;
+		margin-bottom: 20px;
 	}
 
 	.stat-item {
-		padding: 2px;
-		font-size: 0.9em;
+		padding: 10px 8px;
+		font-size: 0.85em;
+	}
+
+	.stat-number {
+		font-size: 1.5em;
 	}
 
 	.number-display {
-		font-size: 3.5em;
+		font-size: 3em;
 		margin: 15px 0;
 	}
 
 	.question-card {
-		padding: 25px 15px;
+		padding: 20px 15px;
 		min-height: 240px;
+	}
+
+	.question-text {
+		font-size: 1.2em;
+		margin-bottom: 15px;
 	}
 
 	.buttons {
 		grid-template-columns: 1fr;
 		gap: 12px;
+		margin-top: 15px;
 	}
 
 	.btn {
 		width: 100%;
 		padding: 14px;
-		font-size: 1em;
+		font-size: 1.1em;
 	}
 
 	.timer {
@@ -662,7 +681,7 @@ body.dark .summary-label {
 	.score-circle {
 		width: 140px;
 		height: 140px;
-		font-size: 2.4em;
+		font-size: 2.2em;
 		margin: 20px auto;
 	}
 
@@ -673,50 +692,95 @@ body.dark .summary-label {
 	}
 
 	.restart-btn {
-		font-size: 1em;
-		padding: 12px;
+		font-size: 1.1em;
+		padding: 14px;
 	}
 }
 
 /* ===== התאמה למסכים קטנים מאוד (טלפונים ישנים, <480px) ===== */
 @media (max-width: 480px) {
-	h1 {
-		font-size: 1.6em;
+	body {
+		padding: 5px;
 	}
 
-	.subtitle {
-		font-size: 0.85em;
+	.container {
+		width: 100%;
+		padding: 0;
 	}
 
-	.number-display {
-		font-size: 3em;
-	}
-
-	.btn {
-		font-size: 0.9em;
-		padding: 12px;
-	}
-
-	.stat-item {
-		padding: px;
-		font-size: 0.8em;
-	}
-
-	.feedback {
-		font-size: 0.9em;
-		padding: 10px;
+	.main-card {
+		padding: 15px 10px;
+		border-radius: 15px;
 	}
 
 	.theme-toggle {
 		top: -40px;
+		right: 0;
+		font-size: 0.75em;
+		padding: 6px 10px;
+	}
+
+	h1 {
+		font-size: 1.4em;
+	}
+
+	.subtitle {
 		font-size: 0.8em;
-		padding: 6px 12px;
+	}
+
+	.stats {
+		gap: 6px;
+	}
+
+	.stat-item {
+		padding: 8px 6px;
+		font-size: 0.75em;
+	}
+
+	.stat-number {
+		font-size: 1.3em;
+	}
+
+	.number-display {
+		font-size: 2.5em;
+		margin: 10px 0;
+	}
+
+	.question-text {
+		font-size: 1em;
+		margin-bottom: 10px;
+	}
+
+	.question-card {
+		padding: 15px 10px;
+		min-height: 200px;
+	}
+
+	.btn {
+		font-size: 1em;
+		padding: 12px;
+	}
+
+	.feedback {
+		font-size: 0.85em;
+		padding: 10px;
 	}
 
 	.score-circle {
-		width: 120px;
-		height: 120px;
+		width: 110px;
+		height: 110px;
+		font-size: 1.8em;
+	}
+
+	.completion-screen h2 {
 		font-size: 2em;
 	}
+
+	.final-message {
+		font-size: 1.1em;
+	}
+
+	.summary-number {
+		font-size: 1.6em;
+	}
 }
- 
